@@ -1,0 +1,13 @@
+<label for="location-search">Search for a new place</label>
+<input #search id="location-search" placeholder="Ex: Chicago">
+<button (click)="searchHousingLocations(search.value)" >Search</button>
+
+<!-- NG FOR TEMPALTE SYNTAX -->
+<!-- Can use a property of the Class Component to loop through and make UI -->
+<article *ngFor="let location of results">
+  <p>{{location.name}}</p>
+  <p>{{location.city}}, {{location.state}}</p>
+  <!-- Each article now has a click event on it that emits our Custom  -->
+  <!-- Event Emitter Output property -->
+  <button (click)="selectHousingLocation(location)">View Details</button>
+</article>

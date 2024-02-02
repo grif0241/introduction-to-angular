@@ -1,1 +1,26 @@
-Fairhouse App is running
+<main>
+  <header><img src="../assets/logo.svg" alt="logo of fairhouse">Fairhouse</header>
+  <section>
+    <!-- Angular can dynamically bind the value to a variable or expression -->
+    <!-- Input property surrounded by [] assign it to the property of the class you want to send -->
+    
+    <!-- Event Listen: name should match the event emitter in child (the @Output prop) -->
+    <!-- (eventFromChild)="eventHandlerParent($event)" -->
+    <!-- $event will be an object of type HousingLocation, because that's what we  -->
+    <!-- set the event emitter to emit -->
+    <app-housing-list [locationList]="housingLocationList" (selectedLocationEvent)="updateSelectedLocation($event)"></app-housing-list>
+    <article>
+      <!-- ng-container is a dom container that is removed after compiling -->
+      <!-- ngIf only displays if the expression is true -->
+      <ng-container *ngIf="selectedLocation">
+        <img [src]="selectedLocation?.photo" alt="">
+        <h2>{{selectedLocation?.name}}</h2>
+        <p>{{selectedLocation?.availableUnits}}</p>
+        <p>{{selectedLocation?.city}}</p>
+        <p>{{selectedLocation?.laundry ? "Has Laundry" : "Does not have laundry"}}</p>
+        <p>{{selectedLocation?.wifi ? "Has wifi" : "Does not have wifi"}}</p>
+      </ng-container>
+
+    </article>
+  </section>
+</main>
